@@ -22,7 +22,7 @@ Add the following to your Dockerfile:
 ```dockerfile
 # Download and install the authenticator
 ARG ORG_USERNAME_FIX_VERSION="v1.0.0" # x-release-please-version
-ARG ORG_USERNAME_FIX_KC_VERSION="26.2.5"
+ARG ORG_USERNAME_FIX_KC_VERSION="26.3.3"
 ADD https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/releases/download/${ORG_USERNAME_FIX_VERSION}/fix-organization-username-form-${ORG_USERNAME_FIX_VERSION}-kc-${ORG_USERNAME_FIX_KC_VERSION}.jar \
     /opt/keycloak/providers/fix-organization-username-form.jar
 ```
@@ -44,7 +44,7 @@ ADD https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/
 
 Using just:
 ```bash
-# Build for the default Keycloak version (26.2.5)
+# Build for the default Keycloak version (26.3.3)
 just build
 ```
 
@@ -77,7 +77,10 @@ Access:
 
 The authenticator is built and tested with multiple Keycloak versions:
 
-- 26.2.5
+| Keycloak Version | Compatible SPI Version |
+|------------------|------------------------|
+| 26.3.3           | v2.0.0                 |
+| 26.2.5           | v1.0.0                 |
 
 While the builds differ slightly for each version, the core functionality remains the same. The version-specific builds ensure compatibility and proper integration with each Keycloak release.
 
