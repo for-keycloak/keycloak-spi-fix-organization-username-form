@@ -1,0 +1,11 @@
+.vscode
+.DS_Store
+dist
+target
+dist_keycloak
+build
+*.log
+docker-compose.override.yml
+compose.override.yml
+docker-compose.override.yaml
+compose.override.yaml
