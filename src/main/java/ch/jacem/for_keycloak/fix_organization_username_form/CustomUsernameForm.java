@@ -3,6 +3,7 @@ package ch.jacem.for_keycloak.fix_organization_username_form;
 import org.keycloak.authentication.authenticators.browser.UsernamePasswordForm;
 import org.keycloak.authentication.AuthenticationFlowContext;
 import org.keycloak.forms.login.LoginFormsProvider;
+import org.keycloak.models.KeycloakSession;
 import org.keycloak.services.messages.Messages;
 
 import jakarta.ws.rs.core.MultivaluedMap;
@@ -11,6 +12,10 @@ import jakarta.ws.rs.core.Response;
 public final class CustomUsernameForm extends UsernamePasswordForm {
     public CustomUsernameForm() {
         super();
+    }
+
+    public CustomUsernameForm(KeycloakSession session) {
+        super(session);
     }
 
     @Override
