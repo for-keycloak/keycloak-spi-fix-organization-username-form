@@ -1,0 +1,78 @@
+services:
+  keycloak-main:
+    image: quay.io/keycloak/keycloak:${KC_VERSION:-26.5.2}
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres/keycloak_main
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+    volumes:
+      - ../target/fix-organization-username-form-dev-kc-${KC_VERSION:-26.5.2}.jar:/opt/keycloak/providers/fix-organization-username-form.jar
+      - ./setup/main-realm.json:/opt/keycloak/data/import/realm.json
+    command: start-dev --import-realm
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/localhost/8080"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  keycloak-idp:
+    image: quay.io/keycloak/keycloak:${KC_VERSION:-26.5.2}
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres/keycloak_idp
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+    volumes:
+      - ./setup/idp-realm.json:/opt/keycloak/data/import/realm.json
+    command: start-dev --import-realm
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/localhost/8080"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_MULTIPLE_DATABASES: keycloak_main,keycloak_idp
+    volumes:
+      - ./setup/init-multiple-dbs.sh:/docker-entrypoint-initdb.d/init-multiple-dbs.sh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U keycloak"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.58.0-jammy
+    working_dir: /e2e
+    volumes:
+      - ./:/e2e
+      - ./test-results:/e2e/test-results
+      - playwright-cache:/e2e/node_modules
+    environment:
+      BASE_URL: http://keycloak-main:8080
+      IDP_URL: http://keycloak-idp:8080
+      CI: ${CI:-false}
+    command: sh -c "npm install && npx playwright test"
+    depends_on:
+      keycloak-main:
+        condition: service_healthy
+      keycloak-idp:
+        condition: service_healthy
+
+volumes:
+  playwright-cache:
