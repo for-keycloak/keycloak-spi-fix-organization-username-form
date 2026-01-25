@@ -36,7 +36,35 @@ logs:
 shell:
     docker compose exec keycloak bash
 
+# Install pre-commit hooks
+setup:
+    pre-commit install
+    pre-commit install --hook-type commit-msg
+
 # List all available Keycloak versions
 versions:
     @echo "Supported Keycloak versions:"
-    @echo "- 26.3.3 (default)"
+    @echo "- 26.5.2 (default)"
+    @echo "- 26.4.7"
+    @echo "- 26.3.5"
+    @echo "- 26.2.5"
+
+# Run E2E tests
+[no-exit-message]
+e2e: build
+    docker compose -f e2e/compose.yaml run --rm playwright
+    docker compose -f e2e/compose.yaml down -v
+
+# Run E2E tests for a specific Keycloak version
+[no-exit-message]
+e2e-version VERSION: (build-version VERSION)
+    KC_VERSION={{VERSION}} docker compose -f e2e/compose.yaml run --rm playwright
+    KC_VERSION={{VERSION}} docker compose -f e2e/compose.yaml down -v
+
+# Stop E2E environment and clean up
+e2e-down:
+    docker compose -f e2e/compose.yaml down -v
+
+# Watch E2E environment logs
+e2e-logs:
+    docker compose -f e2e/compose.yaml logs -f

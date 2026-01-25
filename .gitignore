@@ -9,3 +9,8 @@ docker-compose.override.yml
 compose.override.yml
 docker-compose.override.yaml
 compose.override.yaml
+
+# E2E tests
+e2e/node_modules
+e2e/test-results
+e2e/playwright-report

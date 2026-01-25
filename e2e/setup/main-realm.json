@@ -1,0 +1,167 @@
+{
+  "realm": "test-realm",
+  "enabled": true,
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": false,
+  "organizationsEnabled": true,
+  "browserFlow": "custom-browser-flow",
+  "identityProviders": [
+    {
+      "alias": "test-idp",
+      "displayName": "Test IDP",
+      "providerId": "oidc",
+      "enabled": true,
+      "trustEmail": true,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "firstBrokerLoginFlowAlias": "first broker login",
+      "config": {
+        "clientId": "main-keycloak-client",
+        "clientSecret": "main-keycloak-client-secret",
+        "tokenUrl": "http://keycloak-idp:8080/realms/idp-realm/protocol/openid-connect/token",
+        "authorizationUrl": "http://keycloak-idp:8080/realms/idp-realm/protocol/openid-connect/auth",
+        "logoutUrl": "http://keycloak-idp:8080/realms/idp-realm/protocol/openid-connect/logout",
+        "userInfoUrl": "http://keycloak-idp:8080/realms/idp-realm/protocol/openid-connect/userinfo",
+        "issuer": "http://keycloak-idp:8080/realms/idp-realm",
+        "validateSignature": "false",
+        "useJwksUrl": "true",
+        "jwksUrl": "http://keycloak-idp:8080/realms/idp-realm/protocol/openid-connect/certs",
+        "syncMode": "INHERIT",
+        "clientAuthMethod": "client_secret_post"
+      }
+    }
+  ],
+  "authenticationFlows": [
+    {
+      "alias": "custom-browser-flow",
+      "description": "Custom browser flow with split username/password forms",
+      "providerId": "basic-flow",
+      "topLevel": true,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticator": "auth-cookie",
+          "authenticatorFlow": false,
+          "requirement": "ALTERNATIVE",
+          "priority": 10
+        },
+        {
+          "authenticator": "auth-spnego",
+          "authenticatorFlow": false,
+          "requirement": "DISABLED",
+          "priority": 20
+        },
+        {
+          "authenticator": "identity-provider-redirector",
+          "authenticatorFlow": false,
+          "requirement": "ALTERNATIVE",
+          "priority": 25
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "ALTERNATIVE",
+          "priority": 30,
+          "flowAlias": "custom-browser-flow forms"
+        }
+      ]
+    },
+    {
+      "alias": "custom-browser-flow forms",
+      "description": "Username and password forms subflow",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticator": "organization",
+          "authenticatorFlow": false,
+          "requirement": "ALTERNATIVE",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "ALTERNATIVE",
+          "priority": 20,
+          "flowAlias": "custom-browser-flow organization forms"
+        }
+      ]
+    },
+    {
+      "alias": "custom-browser-flow organization forms",
+      "description": "Forms subflow after organization check",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticator": "auth-username-form",
+          "authenticatorFlow": false,
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticator": "auth-password-form",
+          "authenticatorFlow": false,
+          "requirement": "REQUIRED",
+          "priority": 20
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "name": "test-org",
+      "alias": "test-org",
+      "enabled": true,
+      "domains": [
+        {
+          "name": "example.com",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "regular-user",
+      "email": "regular-user@test.com",
+      "emailVerified": true,
+      "enabled": true,
+      "firstName": "Regular",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "idp-linked-user",
+      "email": "idp-user@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "firstName": "IDP",
+      "lastName": "Linked",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password123",
+          "temporary": false
+        }
+      ],
+      "federatedIdentities": [
+        {
+          "identityProvider": "test-idp",
+          "userId": "idp-user",
+          "userName": "idp-user"
+        }
+      ]
+    }
+  ]
+}
