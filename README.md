@@ -21,7 +21,7 @@ Add the following to your Dockerfile:
 
 ```dockerfile
 # Download and install the authenticator
-ARG ORG_USERNAME_FIX_VERSION="v1.1.1" # x-release-please-version
+ARG ORG_USERNAME_FIX_VERSION="v1.1.2" # x-release-please-version
 ARG ORG_USERNAME_FIX_KC_VERSION="26.5.2"
 ADD https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/releases/download/${ORG_USERNAME_FIX_VERSION}/fix-organization-username-form-${ORG_USERNAME_FIX_VERSION}-kc-${ORG_USERNAME_FIX_KC_VERSION}.jar \
     /opt/keycloak/providers/fix-organization-username-form.jar

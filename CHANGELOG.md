@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.1...v1.1.2) (2026-01-25)
+
+
+### Continuous Integration
+
+* **workflows:** harden permissions and use GITHUB_TOKEN ([82813a3](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/82813a3b307d4a39e81f2430fc39bb5026e20af3))
+
 ## [1.1.1](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.0...v1.1.1) (2026-01-25)
 
 
