@@ -22,7 +22,7 @@ Add the following to your Dockerfile:
 ```dockerfile
 # Download and install the authenticator
 ARG ORG_USERNAME_FIX_VERSION="v2.0.0" # x-release-please-version
-ARG ORG_USERNAME_FIX_KC_VERSION="26.3.3"
+ARG ORG_USERNAME_FIX_KC_VERSION="26.5.2"
 ADD https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/releases/download/${ORG_USERNAME_FIX_VERSION}/fix-organization-username-form-${ORG_USERNAME_FIX_VERSION}-kc-${ORG_USERNAME_FIX_KC_VERSION}.jar \
     /opt/keycloak/providers/fix-organization-username-form.jar
 ```
@@ -44,8 +44,11 @@ ADD https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/
 
 Using just:
 ```bash
-# Build for the default Keycloak version (26.3.3)
+# Build for the default Keycloak version
 just build
+
+# Build for a specific Keycloak version
+just build-version 26.4.7
 ```
 
 
@@ -77,12 +80,27 @@ Access:
 
 The authenticator is built and tested with multiple Keycloak versions:
 
-| Keycloak Version | Compatible SPI Version |
-|------------------|------------------------|
-| 26.3.3           | v2.0.0                 |
-| 26.2.5           | v1.0.0                 |
+| Keycloak Version |
+|------------------|
+| 26.5.2           |
+| 26.4.7           |
+| 26.3.5           |
+| 26.2.5           |
 
-While the builds differ slightly for each version, the core functionality remains the same. The version-specific builds ensure compatibility and proper integration with each Keycloak release.
+Each release includes pre-built JARs for all supported versions. Download the JAR matching your Keycloak version from the [releases page](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/releases).
+
+
+### Running E2E Tests
+
+The project includes Playwright-based E2E tests that verify the SPI fixes the organization username form bug.
+
+```bash
+# Run E2E tests with default Keycloak version
+just e2e
+
+# Run E2E tests for a specific Keycloak version
+just e2e-version 26.4.7
+```
 
 
 ## Development Notes
