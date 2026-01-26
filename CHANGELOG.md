@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.2...v1.1.3) (2026-01-26)
+
+
+### Dependencies
+
+* bump postgres from 17.5-alpine to 18.1-alpine ([e429cf5](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/e429cf5a259a1390c3595894bae9d6eff921365a))
+
 ## [1.1.2](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.1...v1.1.2) (2026-01-25)
 
 
