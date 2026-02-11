@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.3...v1.1.4) (2026-02-11)
+
+
+### Dependencies
+
+* bump keycloak/keycloak in the minor-versions group ([b80e86a](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/b80e86ae45b9ab6a98ba856800e7559b271e5035))
+
 ## [1.1.3](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.2...v1.1.3) (2026-01-26)
 
 
