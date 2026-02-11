@@ -18,7 +18,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./target/fix-organization-username-form-dev-kc-26.5.2.jar:/opt/keycloak/providers/fix-organization-username-form.jar
+      - ./target/fix-organization-username-form-dev-kc-26.5.3.jar:/opt/keycloak/providers/fix-organization-username-form.jar
     command: start-dev
 
   postgres:
