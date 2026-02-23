@@ -1,6 +1,6 @@
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:26.5.3
+    image: quay.io/keycloak/keycloak:26.5.4
     environment:
       # Admin console credentials
       KEYCLOAK_ADMIN: admin
@@ -22,7 +22,7 @@ services:
     command: start-dev
 
   postgres:
-    image: postgres:18.1-alpine
+    image: postgres:18.2-alpine
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
