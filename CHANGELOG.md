@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.4](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.3...v1.1.4) (2026-02-25)
+
+
+### Miscellaneous Chores
+
+* **keycloak:** update default version references from 26.5.2 to 26.5.4 ([8ca15c2](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/8ca15c269d2c4a9551bfb7af1ba28cde621a1fc0))
+
+
+### Dependencies
+
+* bump keycloak/keycloak in the minor-versions group ([b80e86a](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/b80e86ae45b9ab6a98ba856800e7559b271e5035))
+* bump org.apache.maven.plugins:maven-surefire-plugin ([8dae564](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/8dae564b2ebed40bb63bf40ed5a2deeb1aa4d2ff))
+* bump postgres in the minor-versions group across 1 directory ([a21cf6a](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/a21cf6a9c7efd950c12ae613e9879ee32f0693d0))
+* bump the minor-versions group across 1 directory with 5 updates ([371fe9b](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/371fe9b36d83e70a9c6c829c429d6304209fe1f1))
+
 ## [1.1.3](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.2...v1.1.3) (2026-01-26)
 
 
