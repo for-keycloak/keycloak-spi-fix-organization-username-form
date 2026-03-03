@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.5](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.4...v1.1.5) (2026-03-03)
+
+
+### Dependencies
+
+* bump actions/upload-artifact from 6.0.0 to 7.0.0 ([09f8323](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/09f8323bb505d8deb071ce827cd6f577012cf2d9))
+* bump postgres in the minor-versions group ([9e17fa3](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/9e17fa37838a18c44955b4f72f78f2cc1b3a407e))
+
 ## [1.1.4](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.3...v1.1.4) (2026-02-25)
 
 
