@@ -44,7 +44,9 @@ setup:
 # List all available Keycloak versions
 versions:
     @echo "Supported Keycloak versions:"
-    @echo "- 26.5.4 (default)"
+    @echo "- 26.7.2 (default)"
+    @echo "- 26.6.4"
+    @echo "- 26.5.4"
     @echo "- 26.4.7"
     @echo "- 26.3.5"
     @echo "- 26.2.5"
