@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.5...v1.2.0) (2026-09-15)
+
+
+### Features
+
+* **keycloak:** add 26.6.4 and 26.7.2 builds; bump default from 26.5.4 ([6b7ed15](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/6b7ed15041eb2300962208a8b5f27553ed29df09)), closes [#50](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/issues/50)
+
+
+### Miscellaneous Chores
+
+* **keycloak:** bump 26.7.2 -&gt; 26.7.3 (20 CVE fixes released 2026-08-31) ([caa74a3](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/caa74a3966a8db97dc06ab21a8429a50920dd4c5))
+
 ## [1.1.5](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.4...v1.1.5) (2026-03-03)
 
 
