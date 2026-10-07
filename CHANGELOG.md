@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.2.0...v1.3.0) (2026-10-07)
+
+
+### Features
+
+* **keycloak:** add 26.8.0 build ([e877dda](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/commit/e877dda3a034ecb7bf2885616d5633e4a277424d))
+
 ## [1.2.0](https://github.com/for-keycloak/keycloak-spi-fix-organization-username-form/compare/v1.1.5...v1.2.0) (2026-09-15)
 
 
