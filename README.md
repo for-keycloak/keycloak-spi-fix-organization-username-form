@@ -82,6 +82,7 @@ The authenticator is built and tested with multiple Keycloak versions:
 
 | Keycloak Version |
 |------------------|
+| 26.8.0           |
 | 26.7.3           |
 | 26.6.4           |
 | 26.5.4           |
